@@ -1,2 +1,2 @@
 # scenario-quality-checker
-Academic project for Sowftware Engineering
+Academic project for Software Engineering
