@@ -8,37 +8,28 @@ import java.util.Arrays;
 
 
 @RestController
-@RequestMapping("/{text}")
 public class ScenarioQualityCheckerController {
 
     private static final Logger logger = LoggerFactory.getLogger(ScenarioQualityCheckerController.class);
 
-    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-    public String get(@PathVariable String text,
-                              @RequestParam(value="transforms", defaultValue="upper,escape") String[] transforms) {
+    @RequestMapping(value="/scenarios/{id}", method=RequestMethod.GET, produces="application/json")
+    public String get(@PathVariable int id) {
 
-        // log the parameters
-        logger.debug(text);
-        logger.debug(Arrays.toString(transforms));
+        logger.debug("scenario " + id);
 
-        // do the transformation, you should run your logic here, below just a silly example
-        ScenarioQualityChecker transformer = new ScenarioQualityChecker(transforms);
-        return transformer.transform(text);
+        // logic
+        String sid = Integer.toString(id);
+        return "{ \"id\" : \"" + sid + "\" }";  //return jsonified scenarios[id] or func(scenarios[id]) depending on params
     }
 
-    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public String post(@PathVariable String text,
-                      @RequestBody String[] transforms) {
+    @RequestMapping(value="/add", method=RequestMethod.POST, produces="application/json", consumes="application/json")
+    public String post(@RequestBody String scenarioJSON) {
 
-        // log the parameters
-        logger.debug(text);
-        logger.debug(Arrays.toString(transforms));
+        //add scenario object constructed from json (gson or other lib), return OK response and resource ID
+        //parse it here or add model and convert it with @RequestBody <T> scenarioJSON - uses Jackson by default
 
-        // do the transformation, you should run your logic here, below just a silly example
-        ScenarioQualityChecker transformer = new ScenarioQualityChecker(transforms);
-        return transformer.transform(text);
+        return "{\"id\" : \"1\" }" ; //object id for future reference
     }
-
 
 
 }

@@ -1,18 +1,25 @@
 package pl.put.poznan.qualitychecker.logic;
 
-/**
- * This is just an example to show that the logic should be outside the REST service.
- */
+
 public class ScenarioQualityChecker {
 
-    private final String[] transforms;
+    //String array for storing params
 
-    public ScenarioQualityChecker(String[] transforms){
-        this.transforms = transforms;
+    //map that *maps* parameters (get methods parameters) to functions
+    //private final map...;
+
+    //reference to Scenario object
+
+
+    public ScenarioQualityChecker(String[] params){
+    //    this.params = params;
     }
 
-    public String transform(String text){
-        // of course normally it would to something based on transforms
-        return text.toUpperCase();
+    public String apply (String function) {
+        // foreach param in params:
+            // apply function to Scenario object
+            // add result to json
+        return "{\"id\" : 1 }";
     }
+
 }
