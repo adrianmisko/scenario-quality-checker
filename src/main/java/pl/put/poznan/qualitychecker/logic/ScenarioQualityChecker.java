@@ -1,5 +1,6 @@
 package pl.put.poznan.qualitychecker.logic;
 
+import pl.put.poznan.qualitychecker.models.Scenario;
 
 public class ScenarioQualityChecker {
 
@@ -8,14 +9,18 @@ public class ScenarioQualityChecker {
     //map that *maps* parameters (get methods parameters) to functions
     //private final map...;
 
-    //reference to Scenario object
 
+    //copy of Scenario object
+
+    Scenario s;
+    String[] params = {"steps", "actors"};
 
     public ScenarioQualityChecker(String[] params){
     //    this.params = params;
     }
 
     public String apply (String function) {
+        String json = "";
         // foreach param in params:
             // apply function to Scenario object
             // add result to json
