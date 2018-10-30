@@ -12,7 +12,7 @@ public class ScenarioQualityChecker {
 
     //copy of Scenario object
 
-    Scenario s;
+    //Scenario s;
     String[] params = {"steps", "actors"};
 
     public ScenarioQualityChecker(String[] params){
