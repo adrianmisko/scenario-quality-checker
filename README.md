@@ -1,9 +1,8 @@
 # scenario-quality-checker
 <img align="right" src="https://travis-ci.com/adrianmisko/scenario-quality-checker.svg?branch=master" />
 
-## Academic project for Software Engineering
+**Academic project for Software Engineering**
 
-<hr />
 
 This application is made with Java and Spring MVC. It exposes RESTful API that uses JSON as data-interchange format.
 Full documentation will be avaiable soon.
