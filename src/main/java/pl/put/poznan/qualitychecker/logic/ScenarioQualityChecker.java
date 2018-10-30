@@ -1,6 +1,5 @@
 package pl.put.poznan.qualitychecker.logic;
 
-import pl.put.poznan.qualitychecker.models.Scenario;
 
 public class ScenarioQualityChecker {
 
