@@ -3,7 +3,6 @@
 
 ## Academic project for Software Engineering
 
-<hr />
 
 This application is made with Java and Spring MVC. It exposes RESTful API that uses JSON as data-interchange format.
 Full documentation will be avaiable soon.
