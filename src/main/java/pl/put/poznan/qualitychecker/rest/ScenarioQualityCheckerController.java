@@ -24,7 +24,7 @@ public class ScenarioQualityCheckerController {
         return "{ \"id\" : \"" + stringid + "\" }";  //return jsonified scenarios[id] or func(scenarios[id]) depending on params
     }
 
-    @RequestMapping(value="scenarios/add", method=RequestMethod.POST, produces="application/json", consumes="application/json")
+    @RequestMapping(value="/scenarios/add", method=RequestMethod.POST, produces="application/json", consumes="application/json")
     public String post(@RequestBody String scenarioJSON) {
 
         //add scenario object constructed from json (gson or other lib), return OK response and resource ID
