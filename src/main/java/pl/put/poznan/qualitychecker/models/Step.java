@@ -4,10 +4,12 @@ import java.util.List;
 
 public class Step {
 
-    private String keyword;
-    private String actor;
-    private String systemActor;
-    private String text;
-    private Scenario subScenario;
+    public String keyword;
+    public String actor;
+    public String systemActor;
+    public String text;
+    public Scenario subScenario;
+
+    public Step() {}
 
 }

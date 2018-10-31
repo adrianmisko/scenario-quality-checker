@@ -8,6 +8,8 @@ public class Scenario {
     public Header header;
     public List<Step> steps;
 
-    public Scenario() {}
+    public Scenario() {
+        steps = new ArrayList<>();
+    }
 
 }

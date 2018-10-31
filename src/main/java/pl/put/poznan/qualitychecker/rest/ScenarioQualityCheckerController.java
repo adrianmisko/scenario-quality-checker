@@ -16,7 +16,7 @@ import java.util.List;
 public class ScenarioQualityCheckerController {
 
     private static final Logger logger = LoggerFactory.getLogger(ScenarioQualityCheckerController.class);
-    private static final List<Scenario> scenarios = new ArrayList<>();
+    private static final ArrayList<Scenario> scenarios = new ArrayList<>();
 
     @RequestMapping(value="/scenarios/{id}", method=RequestMethod.GET, produces="application/json")
     public String get(@PathVariable int id, @RequestParam(value="extract", defaultValue="") String[] transforms) {
@@ -31,6 +31,10 @@ public class ScenarioQualityCheckerController {
     public String post(@RequestBody String scenarioJSON) {
 
         ScenarioQualityChecker sqc = new ScenarioQualityChecker();
+        sqc.processNode(scenarioJSON, scenarios);
+
+        for (Scenario s : scenarios)
+            System.out.println(s.header.title);
 
         return scenarioJSON;
     }
