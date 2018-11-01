@@ -1,6 +1,5 @@
 package pl.put.poznan.qualitychecker.models;
 
-import java.util.List;
 
 public class Step {
 
@@ -8,7 +7,7 @@ public class Step {
     public String actor;
     public String systemActor;
     public String text;
-    public Scenario subScenario;
+    public Scenario scenario;
 
     public Step() {}
 

@@ -1,16 +1,12 @@
 package pl.put.poznan.qualitychecker.rest;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.qualitychecker.logic.ScenarioQualityChecker;
 import pl.put.poznan.qualitychecker.models.Scenario;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
 
 @RestController
 public class ScenarioQualityCheckerController {
@@ -21,24 +17,21 @@ public class ScenarioQualityCheckerController {
     @RequestMapping(value="/scenarios/{id}", method=RequestMethod.GET, produces="application/json")
     public String get(@PathVariable int id, @RequestParam(value="extract", defaultValue="") String[] transforms) {
 
-        logger.debug("scenario " + id);
+        logger.debug("GET /scenario/" + id);
 
-
-        return "{ \"id\" : \"" + "423" + "\" }";
+        return  "{}";
     }
 
     @RequestMapping(value="/scenarios/add", method=RequestMethod.POST, produces="application/json", consumes="application/json")
     public String post(@RequestBody String scenarioJSON) {
 
+        logger.debug("POST /scenario/add");
+
         ScenarioQualityChecker sqc = new ScenarioQualityChecker();
-        sqc.processNode(scenarioJSON, scenarios);
+        Scenario topScenario = sqc.processNode(scenarioJSON, scenarios);
 
-        for (Scenario s : scenarios)
-            System.out.println(s.header.title);
-
-        return scenarioJSON;
+        return "{ \"id\" : " + Integer.toString(topScenario.id) + "}";
     }
-
 
 }
 

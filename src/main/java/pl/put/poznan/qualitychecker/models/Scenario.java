@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Scenario {
 
+    public int id;
     public Header header;
     public List<Step> steps;
 

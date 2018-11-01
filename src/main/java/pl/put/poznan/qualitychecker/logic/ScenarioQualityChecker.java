@@ -6,10 +6,8 @@ import pl.put.poznan.qualitychecker.models.Header;
 import pl.put.poznan.qualitychecker.models.Scenario;
 import pl.put.poznan.qualitychecker.models.Step;
 
-import java.io.DataInput;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ScenarioQualityChecker {
 
@@ -19,11 +17,11 @@ public class ScenarioQualityChecker {
         mapper = new ObjectMapper();
     }
 
-    public Scenario processNode(String scenario, ArrayList<Scenario> scenarios) {
-        Scenario s = new Scenario();
+    public Scenario processNode(String scenarioJSON, ArrayList<Scenario> scenarios) {
+        Scenario scenario = new Scenario();
         try {
-            JsonNode node = mapper.readTree(scenario);
-            s.header = mapper.readValue(node.get("header").toString(), Header.class);
+            JsonNode node = mapper.readTree(scenarioJSON);
+            scenario.header = mapper.readValue(node.get("header").toString(), Header.class);
             node.at("/steps").forEach(elem -> {
                 Step step = new Step();
                 step.keyword = elem.get("keyword").asText();
@@ -32,17 +30,18 @@ public class ScenarioQualityChecker {
                 step.text = elem.get("text").asText();
                 String subScenarioJSON = elem.get("scenario").toString();
                 if (subScenarioJSON.equals("\"\""))
-                    step.subScenario = null;
+                    step.scenario = null;
                 else
-                    step.subScenario = processNode(subScenarioJSON, scenarios);
-                s.steps.add(step);
+                    step.scenario = processNode(subScenarioJSON, scenarios);
+                scenario.steps.add(step);
             });
-            scenarios.add(s);
+            scenario.id = scenarios.size();
+            scenarios.add(scenario);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return s;
+        return scenario;
     }
 
 }
