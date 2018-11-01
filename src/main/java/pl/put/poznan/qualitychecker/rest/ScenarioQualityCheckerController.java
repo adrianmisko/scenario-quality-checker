@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.put.poznan.qualitychecker.logic.ScenarioQualityChecker;
 import pl.put.poznan.qualitychecker.models.Scenario;
 import java.util.ArrayList;
+import javax.validation.Valid;
 
 @RestController
 public class ScenarioQualityCheckerController {
@@ -21,14 +22,12 @@ public class ScenarioQualityCheckerController {
     }
 
     @RequestMapping(value="/scenarios/add", method=RequestMethod.POST, produces="application/json", consumes="application/json")
-    public String post(@RequestBody String scenarioJSON) {
+    public String post(@RequestBody Scenario scenario) {
 
-        logger.debug("POST /scenario/add");
+        scenario.id = scenarios.size();
+        scenarios.add(scenario);
 
-        ScenarioQualityChecker sqc = new ScenarioQualityChecker();
-        Scenario topScenario = sqc.processNode(scenarioJSON, scenarios);
-
-        return "{ \"id\" : " + Integer.toString(topScenario.id) + "}";
+        return "{ \"id\" : " + Integer.toString(scenario.id) + "}";
     }
 
 }
