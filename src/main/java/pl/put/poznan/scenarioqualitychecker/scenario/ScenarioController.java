@@ -15,7 +15,7 @@ public class ScenarioController {
 
     @RequestMapping(value = "/scenario/{id}", method = RequestMethod.GET,
             consumes = "application/json", produces = "application/json")
-    public String getScenario(@PathVariable long id) {
+    public String getScenario(@PathVariable long id, @RequestParam(value = "api") String[] params) {
 
         return Long.toString(id);
 
