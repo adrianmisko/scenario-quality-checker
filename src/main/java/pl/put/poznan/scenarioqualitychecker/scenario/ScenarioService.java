@@ -3,7 +3,7 @@ package pl.put.poznan.scenarioqualitychecker.scenario;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.put.poznan.scenarioqualitychecker.scenario.scenarioModel.Scenario;
+import pl.put.poznan.scenarioqualitychecker.scenario.dao.Scenario;
 
 import java.util.List;
 

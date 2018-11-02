@@ -1,4 +1,4 @@
-package pl.put.poznan.scenarioqualitychecker.scenario.scenarioModel;
+package pl.put.poznan.scenarioqualitychecker.scenario.dao;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

@@ -3,7 +3,7 @@ package pl.put.poznan.scenarioqualitychecker.scenario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.scenarioqualitychecker.scenario.scenarioModel.Scenario;
+import pl.put.poznan.scenarioqualitychecker.scenario.dao.Scenario;
 
 import javax.validation.Valid;
 
