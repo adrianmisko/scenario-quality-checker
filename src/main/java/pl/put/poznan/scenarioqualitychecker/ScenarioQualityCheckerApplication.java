@@ -1,10 +1,9 @@
-package pl.put.poznan.qualitychecker.app;
+package pl.put.poznan.scenarioqualitychecker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-@SpringBootApplication(scanBasePackages = {"pl.put.poznan.qualitychecker.rest"})
+@SpringBootApplication
 public class ScenarioQualityCheckerApplication {
 
     public static void main(String[] args) {
