@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Step {
@@ -22,12 +23,12 @@ public class Step {
 
     @Getter
     @Setter
-    @NotEmpty
+    @NotNull
     private String actor;
 
     @Getter
     @Setter
-    @NotEmpty
+    @NotNull
     @JsonProperty("system actor")
     private String systemActor;
 
