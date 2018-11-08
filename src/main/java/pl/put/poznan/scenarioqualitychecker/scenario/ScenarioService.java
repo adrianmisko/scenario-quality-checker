@@ -53,6 +53,13 @@ public class ScenarioService {
         }
         return NumberOfSteps;
     }
+    public int getKeywordNumber(Scenario scenario, int NumberOfKeywords) {
+        for (Step step : scenario.getSteps()) {
+            if(!step.getKeyword().equals("")) NumberOfKeywords++;
+            if (step.getScenario() != null) NumberOfKeywords = getKeywordNumber(step.getScenario(), NumberOfKeywords);
+        }
+        return NumberOfKeywords;
+    }
 
 
     public int countSteps(Scenario scenario) {
@@ -72,6 +79,10 @@ public class ScenarioService {
                 }
                 case "NumberOfSteps": {
                     response.put(param, countSteps(scenario));
+                    break;
+                }
+                case "NumberOfKeywords": {
+                    response.put(param, getKeywordNumber(scenario, 0));
                     break;
                 }
             }
