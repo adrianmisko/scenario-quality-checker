@@ -45,6 +45,22 @@ public class ScenarioService {
         return result;
     }
 
+    public int getStepNumber(Scenario scenario, int NumberOfSteps) {
+        for (Step step : scenario.getSteps()) {
+            NumberOfSteps = NumberOfSteps + 1;
+            if (step.getScenario() != null)
+                NumberOfSteps = getStepNumber(step.getScenario(), NumberOfSteps);
+        }
+        return NumberOfSteps;
+    }
+
+
+    public int countSteps(Scenario scenario) {
+        int NumberOfSteps = 0;
+        NumberOfSteps = getStepNumber(scenario, NumberOfSteps);
+        return NumberOfSteps;
+    }
+
     public Map<String, Object> apiCall(long id, String[] params) {
         Scenario scenario = getScenario(id);
         Map<String, Object> response = new LinkedHashMap<>();
@@ -52,6 +68,10 @@ public class ScenarioService {
             switch (param) {
                 case "noactors": {
                     response.put(param, getNoActors(scenario));
+                    break;
+                }
+                case "NumberOfSteps": {
+                    response.put(param, countSteps(scenario));
                     break;
                 }
             }
