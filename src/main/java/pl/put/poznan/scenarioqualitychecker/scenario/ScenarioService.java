@@ -10,19 +10,35 @@ import java.lang.reflect.Method;
 import java.util.*;
 import java.util.function.Function;
 
-
-
+/**
+ * This class describes service for application.
+ */
 
 @Service
 public class ScenarioService {
 
-    @Autowired ScenarioRepository repository;
+    /**
+     * Creation of repository instance.
+     */
 
+    @Autowired
+    ScenarioRepository repository;
+
+
+    /**
+     * Method that saves scenario in repository.
+     * @param scenario A scenario which you want to save.
+     */
 
     public void createScenario(Scenario scenario) {
         repository.save(scenario);
     }
 
+    /**
+     * Method that return a list of steps with empty actor list.
+     * @param scenario A scenario from which you want to get steps with empty actor list.
+     * @param result A list of steps which is your result.
+     */
 
     public void traverse(Scenario scenario, List<Map<Long, List<Step>>> result) {
         List<Scenario> toVisit = new ArrayList<>();
@@ -38,12 +54,24 @@ public class ScenarioService {
             traverse(s, result);
     }
 
+    /**
+     * Method of getting list of steps with empty actor list.
+     * @param scenario A scenario from which you want to get steps with empty actor list.
+     * @return A list of steps with empty actor list.
+     */
 
     public List<Map<Long, List<Step>>> getNoActors(Scenario scenario) {
         List<Map<Long, List<Step>>> result = new ArrayList<>();
         traverse(scenario, result);
         return result;
     }
+
+    /**
+     * Method of getting number of all steps in scenario.
+     * @param scenario A scenario from which you want to get number of all steps in scenario.
+     * @param NumberOfSteps Integer of number of steps.
+     * @return Number of all steps in scenario.
+     */
 
     public int getStepNumber(Scenario scenario, int NumberOfSteps) {
         for (Step step : scenario.getSteps()) {
@@ -53,6 +81,14 @@ public class ScenarioService {
         }
         return NumberOfSteps;
     }
+
+    /**
+     * Method of getting number of steps in scenario with empty keywords string.
+     * @param scenario A scenario from which you want to number of steps in scenario with empty keywords string.
+     * @param NumberOfKeywords Integer of number of steps.
+     * @return Number of steps in scenario with empty keywords string.
+     */
+
     public int getKeywordNumber(Scenario scenario, int NumberOfKeywords) {
         for (Step step : scenario.getSteps()) {
             if(!step.getKeyword().equals("")) NumberOfKeywords++;
@@ -61,12 +97,18 @@ public class ScenarioService {
         return NumberOfKeywords;
     }
 
-
     public int countSteps(Scenario scenario) {
         int NumberOfSteps = 0;
         NumberOfSteps = getStepNumber(scenario, NumberOfSteps);
         return NumberOfSteps;
     }
+
+    /**
+     * Method that call application service.
+     * @param id Id scenario.
+     * @param params The string that determines what api functions will be called/applied.
+     * @return A JSON response containing results of called api functions.
+     */
 
     public Map<String, Object> apiCall(long id, String[] params) {
         Scenario scenario = getScenario(id);
@@ -91,12 +133,30 @@ public class ScenarioService {
     }
 
 
+    /**
+     * Method to get list of all scenarios.
+     * @return List of scenarios.
+     */
+
     public List<Scenario> getAllScenarios() {
         return Lists.newArrayList(repository.findAll());
     }
+
+    /**
+     * Method to get a scenario using its id.
+     * @param id Id of scenario.
+     * @return A scenario from repository.
+     */
 
     public Scenario getScenario(long id) {
         return repository.findById(id).get();
     }
 
+    /**
+     * A constructor for class.
+     */
+
+    public ScenarioService() {
+        super();
+    }
 }
