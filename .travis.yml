@@ -11,4 +11,4 @@ matrix:
     script:
     - mvn javadoc:javadoc
     after_success:
-    - javadoc -private -sourcepath "src/main/java:src/main/ressources:src/test/java"
+    - javadoc -private -sourcepath "src/main/java:src/main/ressources:src/test/java" pl.put.poznan.scenarioqualitychecker pl.put.poznan.scenarioqualitychecker.scenario pl.put.poznan.scenarioqualitychecker.scenario.dao
