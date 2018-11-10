@@ -97,12 +97,6 @@ public class ScenarioService {
         return NumberOfKeywords;
     }
 
-    public int countSteps(Scenario scenario) {
-        int NumberOfSteps = 0;
-        NumberOfSteps = getStepNumber(scenario, NumberOfSteps);
-        return NumberOfSteps;
-    }
-
     /**
      * Method that call application service.
      * @param id Id scenario.
@@ -120,7 +114,7 @@ public class ScenarioService {
                     break;
                 }
                 case "NumberOfSteps": {
-                    response.put(param, countSteps(scenario));
+                    response.put(param, getStepNumber(scenario, 0));
                     break;
                 }
                 case "NumberOfKeywords": {
