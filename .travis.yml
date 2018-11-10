@@ -10,23 +10,14 @@ matrix:
     - rm "${JAVA_HOME}/lib/security/cacerts"
     - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
     - chmod +x .travis/push-javadoc.sh
-    - gem install travis
 
     env:
       global:
-        secure: travis encrypt GH_TOKEN="6dc30611dd76ef23ac96c80d0993a66a53db520e" --add
+        secure: cWAAp05crqH31EVIvuV7/au1pQsYp/6IMRSD42yU2u6hSmXe+55SVbK9nujuT/uIUPZIuLoc5i43ZPPOt+xKMqfJAd4zv+FwdYJGDJrHi9LTb+haLvPH7iZ06gLYj/cx1q0ZgpcrCxIctobHxVHnG0Nq3oudHSrym3m4MTHn2ZkfPlLvrfKno7Omxa43J6qBNMjTcmzLh4RdWKmUlg7BJHcwowkQ0TnDTTbDHY3mPEXpdqjEIPtOx8h/Tskvy5kl3aIfQgdpzx/6WGYP/UfHFlSq/5HKCuzx4gCCEDah/4m2FnBjqgWYqnqIh98xNyeiGvsRwRZMlrHQU0FDGOGNSo9yxlL5m9oSgYsEuzI0uuzDbJxR25huQ/SJdHJM/KFPncy79WD/+htQzGexwdo8aO8goBg6dUcWdPdH2jPH2CsMxLZmW5VNNuLaAtrm/OMbvYga/KTUo6CqYEyvhsM1Z/RcJLAGbGxF/sCAXIS9kVTHg+H6A/Bt8rJ4vD9+qPkUUIeuCxEOtpTZcH7dOMNmDdrrIFEc/sETSeTqouoU+oRjbOICF5wOyItnYcKy+i9m5rJ7lzmKOgGZxTwFTy6Y2eG5xxTr6SMPZy2iZhdfF6nYUOEsiTb6UXzHkwzzB5ouz9bVJnbiqDsCZ5k5kYxh4RNIxKGF1reS8X2UWObRBfM=
 
-    before_script:
-    - git config --global user.email "maciejkinga@gmail.com"
-    - git config --global user.name "KieroKa"
 
     script:
     - mvn javadoc:javadoc
-
-    after_script:
-    - git config credential.helper "store --file=.git/credentials"
-    - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-    - node ./node_modules/grunt-cli/bin/grunt release
 
     after_success:
     - .travis/push-javadoc.sh
