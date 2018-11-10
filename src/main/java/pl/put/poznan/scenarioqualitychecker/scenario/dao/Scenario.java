@@ -2,19 +2,23 @@ package pl.put.poznan.scenarioqualitychecker.scenario.dao;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.put.poznan.scenarioqualitychecker.scenario.dao.constraints.ValidActor;
+import pl.put.poznan.scenarioqualitychecker.scenario.dao.constraints.ValidSystemActor;
 
 import javax.persistence.*;
 import javax.validation.Valid;
 import java.util.List;
 
 /**
- * This class create new scenario.
+ * This class creates a new scenario.
  * It contains: an automatically generated id, a header and list of steps in that scenario.
  *
  * @author Adrian Miśko
  */
 
 @Entity
+@ValidActor
+@ValidSystemActor
 public class Scenario {
 
     /**

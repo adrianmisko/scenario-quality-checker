@@ -83,10 +83,10 @@ public class ScenarioService {
     }
 
     /**
-     * Method of getting number of steps in scenario with empty keywords string.
-     * @param scenario A scenario from which you want to number of steps in scenario with empty keywords string.
+     * Method of getting number of steps in scenario with empty keyword string.
+     * @param scenario A scenario from which you want to get number of steps with empty keyword string.
      * @param NumberOfKeywords Integer of number of steps.
-     * @return Number of steps in scenario with empty keywords string.
+     * @return Number of steps in scenario with empty keyword string.
      */
 
     public int getKeywordNumber(Scenario scenario, int NumberOfKeywords) {
