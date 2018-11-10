@@ -1,4 +1,5 @@
 language: java
+
 jdk:
   - oraclejdk10
 
@@ -9,7 +10,23 @@ matrix:
     - rm "${JAVA_HOME}/lib/security/cacerts"
     - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
     - chmod +x .travis/push-javadoc.sh
+    - gem install travis
+
+    env:
+      global:
+        secure: travis encrypt GH_TOKEN="6dc30611dd76ef23ac96c80d0993a66a53db520e" --add
+
+    before_script:
+    - git config --global user.email "maciejkinga@gmail.com"
+    - git config --global user.name "KieroKa"
+
     script:
     - mvn javadoc:javadoc
+
+    after_script:
+    - git config credential.helper "store --file=.git/credentials"
+    - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+    - node ./node_modules/grunt-cli/bin/grunt release
+
     after_success:
     - .travis/push-javadoc.sh
