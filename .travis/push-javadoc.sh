@@ -19,7 +19,7 @@ then
   mkdir -p ./scenario-quality-checker/apidocs
   cp -Rf $HOME/apidocs ./scenario-quality-checker
   git add -f .
-  git commit -m "Latest javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed"
+  git commit -m "Latest javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed [skip ci]"
   git push -fq origin master > /dev/null
 
   echo "Published Javadoc."
