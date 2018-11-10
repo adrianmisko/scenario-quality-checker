@@ -8,8 +8,8 @@ then
   echo "Publishing javadoc..."
 
   cp -R target/site/apidocs $HOME/apidocs
-
-  cd $HOME
+  git clone --quiet --branch=master https://${GH_TOKEN}@github.com/adrianmisko/scenario-quality-checker gh-pages > /dev/null 
+  cd gh-pages
   git rm -rf ./scenario-quality-checker/apidocs
   mkdir -p ./scenario-quality-checker/apidocs
   cp -Rf $HOME/apidocs ./scenario-quality-checker
