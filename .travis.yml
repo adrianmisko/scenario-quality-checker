@@ -8,6 +8,7 @@ matrix:
     before_install:
     - rm "${JAVA_HOME}/lib/security/cacerts"
     - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
+    - chmod +x .travis/push-javadoc.sh
     script:
     - mvn javadoc:javadoc
     after_success:
