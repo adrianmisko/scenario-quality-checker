@@ -11,4 +11,4 @@ matrix:
     script:
     - mvn javadoc:javadoc
     after_success:
-    - push-javadoc.sh
+    - .travis/push-javadoc.sh
