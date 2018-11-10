@@ -10,3 +10,5 @@ matrix:
     - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
     script:
     - mvn javadoc:javadoc
+    after_success:
+    - javadoc -private -sourcepath "src/main/java:src/main/ressources:src/test/java"
