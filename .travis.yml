@@ -1,8 +1,6 @@
 language: java
-
 jdk:
-  - oraclejdk10
-
+- oraclejdk10
 matrix:
   include:
   - jdk: openjdk10
@@ -11,14 +9,11 @@ matrix:
     - ln -s /etc/ssl/certs/java/cacerts "${JAVA_HOME}/lib/security/cacerts"
     - chmod +x .travis/push-javadoc.sh
 
-    env:
-      global:
-        secure: cWAAp05crqH31EVIvuV7/au1pQsYp/6IMRSD42yU2u6hSmXe+55SVbK9nujuT/uIUPZIuLoc5i43ZPPOt+xKMqfJAd4zv+FwdYJGDJrHi9LTb+haLvPH7iZ06gLYj/cx1q0ZgpcrCxIctobHxVHnG0Nq3oudHSrym3m4MTHn2ZkfPlLvrfKno7Omxa43J6qBNMjTcmzLh4RdWKmUlg7BJHcwowkQ0TnDTTbDHY3mPEXpdqjEIPtOx8h/Tskvy5kl3aIfQgdpzx/6WGYP/UfHFlSq/5HKCuzx4gCCEDah/4m2FnBjqgWYqnqIh98xNyeiGvsRwRZMlrHQU0FDGOGNSo9yxlL5m9oSgYsEuzI0uuzDbJxR25huQ/SJdHJM/KFPncy79WD/+htQzGexwdo8aO8goBg6dUcWdPdH2jPH2CsMxLZmW5VNNuLaAtrm/OMbvYga/KTUo6CqYEyvhsM1Z/RcJLAGbGxF/sCAXIS9kVTHg+H6A/Bt8rJ4vD9+qPkUUIeuCxEOtpTZcH7dOMNmDdrrIFEc/sETSeTqouoU+oRjbOICF5wOyItnYcKy+i9m5rJ7lzmKOgGZxTwFTy6Y2eG5xxTr6SMPZy2iZhdfF6nYUOEsiTb6UXzHkwzzB5ouz9bVJnbiqDsCZ5k5kYxh4RNIxKGF1reS8X2UWObRBfM=
-
-
     script:
     - mvn javadoc:javadoc
-
     after_success:
     - grunt gh-pages:travis
-    - .travis/push-javadoc.sh
+    - ".travis/push-javadoc.sh"
+env:
+  global:
+    secure: pk+GeHXTPBkeuiOOoU6YiIncxeo1C+YL7B1RlqH2mYn5XY0ZeUv9cUsiIFc3G+h5Y+P3zoGqPWhTmiX57Q9b39zXqrEaYYo0nuk5IRdyX2sH4iMWREXHN/juIIKnC4F3tN6dVrbqoMjPtNKG7emM1oh73Mwyh1yOo9I5yAPZSKQuZI3U+RRxmZ4LXre2++IdMsVhQJzTy0KoT5YplnjLnFqgVy57WcBKDBtzFywmPCoGLxZyPnsVN41zxV/25TFj2etpsqm66mDgqZwD/kboQj+W1T1AiwqKTaWgIB+r/hx6JtKn38r/DKJymbVcctaGTu1JFOJvvV6wDYpVfZVzNZ/UrOkYN5GdVAYlC+ZL95z0QK03hbfqYQ+wcAvhz/yW2agsVoByfbZ0i0Ur71V8Kg+9MhjefRnIpJ4uWB5mHa+gQgyVzkXsAO3YdoqgFRelLzusdmKDOGan6xk4BI7s2Asw5eAkrRcWnB9T/V8g22aK5Rk6bJv0eqIXWbuhJDuosP1MG2t34aui1pBA4bYlZjm9RKFBfDYcijVz63rDQqWVzACSvk/AiR4LbhSPfELjWg5gpsG8BlmnzT+nqdA23Pf2wb2IJpE4JGb/SocDuQMYGw6nAXFUZ+HtKwDSYMg8bBiSY5maUWKu6CCFWJ9v0hR6pYQbmddI07fih1+pLb8=
