@@ -2,6 +2,7 @@ package pl.put.poznan.scenarioqualitychecker.scenario;
 
 
 import com.sun.jdi.event.StepEvent;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import java.util.Map;
  * This class describes control for application.
  */
 
+@Slf4j
 @RestController
 public class ScenarioController {
 
@@ -37,6 +39,7 @@ public class ScenarioController {
 
     @RequestMapping(value = "/scenarios", method = RequestMethod.GET, produces = "application/json")
     public Map<String, List<Scenario>> getScenarios() {
+        log.info("GET /scenarios");
         Map<String, List<Scenario>> result = new LinkedHashMap<>();
         result.put("scenarios", service.getAllScenarios());
         return result;
@@ -53,11 +56,13 @@ public class ScenarioController {
     public Map<String, Object> getScenario(@PathVariable long id, @RequestParam(value = "api", required = false) String[] params) {
 
         if (params == null) {
+            log.info("GET /scenarios/" + Long.toString(id));
             Map<String, Object>response = new LinkedHashMap<>();
             response.put("scenario", service.getScenario(id));
             return response;
         }
 
+        log.info("GET /scenarios/" + Long.toString(id) + "?api=" + params);
         return service.apiCall(id, params);
     }
 
@@ -71,6 +76,7 @@ public class ScenarioController {
             consumes = "application/json", produces = "application/json")
     public ResponseEntity addScenario(@RequestBody @Valid Scenario scenario) {
 
+        log.info("POST /scenarios");
         service.createScenario(scenario);
 
         return new ResponseEntity("{ \"message\" : \"success\", \"id\" : \"" + Long.toString(scenario.getId()) +"\" }", HttpStatus.CREATED);
