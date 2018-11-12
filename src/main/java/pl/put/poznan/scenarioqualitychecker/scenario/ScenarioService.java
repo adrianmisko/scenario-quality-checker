@@ -2,6 +2,7 @@ package pl.put.poznan.scenarioqualitychecker.scenario;
 
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import pl.put.poznan.scenarioqualitychecker.scenario.dao.Scenario;
 import pl.put.poznan.scenarioqualitychecker.scenario.dao.Step;
@@ -35,12 +36,11 @@ public class ScenarioService {
     }
 
     /**
-     * Method that return a list of steps with empty actor list.
-     * @param scenario A scenario from which you want to get steps with empty actor list.
-     * @param result A list of steps which is your result.
+     * Utility method for getNoActors method
+     *
      */
 
-    public void traverse(Scenario scenario, List<Step> result) {
+    private void traverse(Scenario scenario, List<Step> result) {
         List<Scenario> toVisit = new ArrayList<>();
         for (Step step : scenario.getSteps()) {
             if (step.getActor().equals(""))
@@ -141,7 +141,7 @@ public class ScenarioService {
      */
 
     public Scenario getScenario(long id) {
-        return repository.findById(id).get();
+        return repository.findById(id).orElseThrow(ResourceNotFoundException::new);
     }
 
     /**

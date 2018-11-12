@@ -10,6 +10,8 @@ import pl.put.poznan.scenarioqualitychecker.scenario.dao.Scenario;
 import pl.put.poznan.scenarioqualitychecker.scenario.dao.Step;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +29,19 @@ public class ScenarioController {
     @Autowired
     private ScenarioService service;
 
+
+    /**
+     * Endpoint for getting all scenarios
+     * @return List of all scenarios
+     */
+
+    @RequestMapping(value = "/scenarios", method = RequestMethod.GET, produces = "application/json")
+    public Map<String, List<Scenario>> getScenarios() {
+        Map<String, List<Scenario>> result = new LinkedHashMap<>();
+        result.put("scenarios", service.getAllScenarios());
+        return result;
+    }
+
     /**
      * Method for getting response from service.
      * @param id Id scenario.
@@ -34,14 +49,16 @@ public class ScenarioController {
      * @return A JSON response containing results of called api functions.
      */
 
-    @RequestMapping(value = "/scenarios/{id}", method = RequestMethod.GET,
-            consumes = "application/json", produces = "application/json")
-
+    @RequestMapping(value = "/scenarios/{id}", method = RequestMethod.GET, produces = "application/json")
     public Map<String, Object> getScenario(@PathVariable long id, @RequestParam(value = "api", required = false) String[] params) {
 
-        Map<String, Object> response = service.apiCall(id, params);
+        if (params == null) {
+            Map<String, Object>response = new LinkedHashMap<>();
+            response.put("scenario", service.getScenario(id));
+            return response;
+        }
 
-        return response;
+        return service.apiCall(id, params);
     }
 
     /**
@@ -52,7 +69,6 @@ public class ScenarioController {
 
     @RequestMapping(value = "/scenarios", method = RequestMethod.POST,
             consumes = "application/json", produces = "application/json")
-
     public ResponseEntity addScenario(@RequestBody @Valid Scenario scenario) {
 
         service.createScenario(scenario);
