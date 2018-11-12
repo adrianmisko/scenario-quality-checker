@@ -40,13 +40,11 @@ public class ScenarioService {
      * @param result A list of steps which is your result.
      */
 
-    public void traverse(Scenario scenario, List<Map<Long, List<Step>>> result) {
+    public void traverse(Scenario scenario, List<Step> result) {
         List<Scenario> toVisit = new ArrayList<>();
-        result.add(new HashMap<>());
-        result.get(result.size()-1).put(scenario.getId(), new ArrayList<>());
         for (Step step : scenario.getSteps()) {
             if (step.getActor().equals(""))
-                result.get(result.size()-1).get(scenario.getId()).add(step);
+                result.add(step);
             if (step.getScenario() != null)
                 toVisit.add(step.getScenario());
         }
@@ -60,8 +58,8 @@ public class ScenarioService {
      * @return A list of steps with empty actor list.
      */
 
-    public List<Map<Long, List<Step>>> getNoActors(Scenario scenario) {
-        List<Map<Long, List<Step>>> result = new ArrayList<>();
+    public List<Step> getNoActors(Scenario scenario) {
+        List<Step> result = new ArrayList<>();
         traverse(scenario, result);
         return result;
     }
@@ -109,7 +107,7 @@ public class ScenarioService {
         Map<String, Object> response = new LinkedHashMap<>();
         for (String param : params) {
             switch (param) {
-                case "noactors": {
+                case "NoActors": {
                     response.put(param, getNoActors(scenario));
                     break;
                 }
