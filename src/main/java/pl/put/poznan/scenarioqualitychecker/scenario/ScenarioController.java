@@ -1,17 +1,14 @@
 package pl.put.poznan.scenarioqualitychecker.scenario;
 
 
-import com.sun.jdi.event.StepEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.put.poznan.scenarioqualitychecker.scenario.dao.Scenario;
-import pl.put.poznan.scenarioqualitychecker.scenario.dao.Step;
+import pl.put.poznan.scenarioqualitychecker.scenario.model.Scenario;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;

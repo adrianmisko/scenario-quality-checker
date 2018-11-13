@@ -4,12 +4,10 @@ import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
-import pl.put.poznan.scenarioqualitychecker.scenario.dao.Scenario;
-import pl.put.poznan.scenarioqualitychecker.scenario.dao.Step;
+import pl.put.poznan.scenarioqualitychecker.scenario.model.Scenario;
+import pl.put.poznan.scenarioqualitychecker.scenario.model.Step;
 
-import java.lang.reflect.Method;
 import java.util.*;
-import java.util.function.Function;
 
 /**
  * This class describes service for application.

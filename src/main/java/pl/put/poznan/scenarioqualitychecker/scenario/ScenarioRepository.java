@@ -1,7 +1,7 @@
 package pl.put.poznan.scenarioqualitychecker.scenario;
 
 import org.springframework.data.repository.CrudRepository;
-import pl.put.poznan.scenarioqualitychecker.scenario.dao.Scenario;
+import pl.put.poznan.scenarioqualitychecker.scenario.model.Scenario;
 
 /**
  *  This is a repository for application.
