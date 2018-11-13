@@ -16,6 +16,7 @@ public class ValidActorValidator implements ConstraintValidator<ValidActor, Scen
         for (Step step : scenario.getSteps()
         ) {
             if ((!step.getActor().equals("")) && (!scenario.getHeader().getActors().contains(step.getActor()))) {
+                log.error("Error on validating actor");
                 return false;
             }
         }
