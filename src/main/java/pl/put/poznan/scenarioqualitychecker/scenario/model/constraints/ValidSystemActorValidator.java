@@ -8,7 +8,7 @@ import javax.validation.ConstraintValidatorContext;
 
 /**
  * Class for checking system actors validation.
- * @autor Robert Dudek
+ * @author Robert Dudek
  */
 
 public class ValidSystemActorValidator implements ConstraintValidator<ValidSystemActor, Scenario> {
