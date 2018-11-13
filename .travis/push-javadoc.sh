@@ -17,7 +17,7 @@ then
   cd gh-pages
   git rm -rf ./docs
   mkdir -p ./docs
-  cp -Rf $HOME/apidocs ./docs
+  cp -Rf $HOME/apidocs/* ./docs
   git add -f .
   git commit -m "Latest javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed [skip ci]"
   git push -fq origin master > /dev/null
