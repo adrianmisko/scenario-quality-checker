@@ -18,5 +18,5 @@ Structure of scenario:
    * text
    * another scenario (*subscenario*)
    
-Link to product backlog in Trello: https://trello.com/b/zO5wBOFS
+Link to product backlog on Trello: https://trello.com/b/zO5wBOFS
 
