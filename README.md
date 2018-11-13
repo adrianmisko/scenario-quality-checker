@@ -5,7 +5,6 @@
 
 
 This application is made with Java and Spring MVC. It exposes RESTful API that uses JSON as data-interchange format.
-Full documentation will be avaiable soon.
 
 Structure of scenario:
 * header:
@@ -18,4 +17,6 @@ Structure of scenario:
    * system actor
    * text
    * another scenario (*subscenario*)
+   
+Link to product backlog on Trello: https://trello.com/b/zO5wBOFS
 

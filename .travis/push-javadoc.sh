@@ -7,7 +7,7 @@ then
 
   echo "Publishing javadoc..."
 
-  cp -R target/site/apidocs $HOME/apidocs
+  cp -R target/site/apidocs /docs
   
   cd $HOME
   git config --global user.email "travis@travis-ci.org"
@@ -15,9 +15,9 @@ then
   
   git clone --quiet --branch=master https://${GH_TOKEN}@github.com/adrianmisko/scenario-quality-checker gh-pages > /dev/null 
   cd gh-pages
-  git rm -rf ./scenario-quality-checker/apidocs
-  mkdir -p ./scenario-quality-checker/apidocs
-  cp -Rf $HOME/apidocs ./scenario-quality-checker
+  git rm -rf ./docs
+  mkdir -p ./docs
+  cp -Rf $docs ./scenario-quality-checker
   git add -f .
   git commit -m "Latest javadoc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed [skip ci]"
   git push -fq origin master > /dev/null
