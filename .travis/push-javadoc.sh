@@ -4,7 +4,8 @@ if [    "$TRAVIS_REPO_SLUG" = "adrianmisko/scenario-quality-checker" -a \
         "$TRAVIS_PULL_REQUEST" = "false" -a \
         "$TRAVIS_BRANCH" = "master" ]
 then
-
+  
+  echo "$HOME"
   echo "Publishing javadoc..."
 
   cp -R target/site/apidocs docs
