@@ -3,6 +3,8 @@ package pl.put.poznan.scenarioqualitychecker.scenario.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import pl.put.poznan.scenarioqualitychecker.scenario.Element;
+import pl.put.poznan.scenarioqualitychecker.scenario.Visitor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -16,7 +18,7 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
-public class Step {
+public class Step implements Element {
 
     /**
      * Automatically generated value for identification.
@@ -79,4 +81,12 @@ public class Step {
     public Step() {
         super();
     }
+
+    @Override
+    public void accept(Visitor v) {
+        v.visit(this);
+        if (this.scenario != null)
+            this.scenario.accept(v);
+    }
+
 }

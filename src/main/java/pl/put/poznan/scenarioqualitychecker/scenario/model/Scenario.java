@@ -2,6 +2,8 @@ package pl.put.poznan.scenarioqualitychecker.scenario.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.put.poznan.scenarioqualitychecker.scenario.Element;
+import pl.put.poznan.scenarioqualitychecker.scenario.Visitor;
 import pl.put.poznan.scenarioqualitychecker.scenario.model.constraints.ValidActor;
 import pl.put.poznan.scenarioqualitychecker.scenario.model.constraints.ValidSystemActor;
 
@@ -19,7 +21,7 @@ import java.util.List;
 @Entity
 @ValidActor
 @ValidSystemActor
-public class Scenario {
+public class Scenario implements Element {
 
     /**
      * Automatically generated value for identification.
@@ -59,6 +61,14 @@ public class Scenario {
 
     public Scenario() {
         super();
+    }
+
+    @Override
+    public void accept(Visitor v) {
+        v.visit(this);
+        for (Step s : this.steps) {
+            s.accept(v);
+        }
     }
 
 }
