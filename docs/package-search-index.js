@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"pl.put.poznan.scenarioqualitychecker"},{"l":"pl.put.poznan.scenarioqualitychecker.scenario"},{"l":"pl.put.poznan.scenarioqualitychecker.scenario.model"},{"l":"pl.put.poznan.scenarioqualitychecker.scenario.model.constraints"}]
+packageSearchIndex = [{"l":"pl.put.poznan.scenarioqualitychecker"},{"l":"pl.put.poznan.scenarioqualitychecker.scenario"},{"l":"pl.put.poznan.scenarioqualitychecker.scenario.model"},{"l":"pl.put.poznan.scenarioqualitychecker.scenario.model.constraints"},{"l":"pl.put.poznan.scenarioqualitychecker.scenario.visitors"}]

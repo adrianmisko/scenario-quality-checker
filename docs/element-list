@@ -2,3 +2,4 @@ pl.put.poznan.scenarioqualitychecker
 pl.put.poznan.scenarioqualitychecker.scenario
 pl.put.poznan.scenarioqualitychecker.scenario.model
 pl.put.poznan.scenarioqualitychecker.scenario.model.constraints
+pl.put.poznan.scenarioqualitychecker.scenario.visitors
