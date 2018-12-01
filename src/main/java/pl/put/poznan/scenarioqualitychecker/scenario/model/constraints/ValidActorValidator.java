@@ -7,8 +7,20 @@ import pl.put.poznan.scenarioqualitychecker.scenario.model.Step;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+/**
+ * Class for checking actors validation.
+ * @author Robert Dudek
+ */
+
 @Slf4j
 public class ValidActorValidator implements ConstraintValidator<ValidActor, Scenario> {
+
+    /**
+     * Method for checking valid system actors.
+     * @param scenario A scenario which you want to check for valid actors.
+     * @param constraintValidatorContext To fill up.
+     * @return True for valid actor or false.
+     */
 
     @Override
     public boolean isValid(Scenario scenario, ConstraintValidatorContext constraintValidatorContext) {
@@ -21,5 +33,14 @@ public class ValidActorValidator implements ConstraintValidator<ValidActor, Scen
             }
         }
         return true;
+    }
+
+
+    /**
+     * A constructor for class.
+     */
+
+    public ValidActorValidator() {
+        super();
     }
 }
