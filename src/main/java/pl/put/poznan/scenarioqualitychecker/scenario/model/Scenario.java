@@ -69,6 +69,7 @@ public class Scenario implements Element {
         for (Step s : this.steps) {
             s.accept(v);
         }
+        v.afterVisit(this);
     }
 
 }

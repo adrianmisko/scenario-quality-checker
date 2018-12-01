@@ -2,7 +2,6 @@ package pl.put.poznan.scenarioqualitychecker.scenario.visitors;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.put.poznan.scenarioqualitychecker.scenario.Element;
 import pl.put.poznan.scenarioqualitychecker.scenario.Visitor;
 import pl.put.poznan.scenarioqualitychecker.scenario.model.Scenario;
 import pl.put.poznan.scenarioqualitychecker.scenario.model.Step;
@@ -23,8 +22,12 @@ public class StepCounter implements Visitor {
     }
 
     @Override
-    public void visit(Scenario scenario) {
-        ;
-    }
+    public void visit(Scenario scenario) {}
+
+    @Override
+    public void afterVisit(Step step) {}
+
+    @Override
+    public void afterVisit(Scenario scenario) {}
 
 }

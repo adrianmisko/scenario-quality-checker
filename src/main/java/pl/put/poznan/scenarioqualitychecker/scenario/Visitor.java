@@ -7,5 +7,7 @@ public interface Visitor {
 
     void visit(Step step);
     void visit(Scenario scenario);
+    void afterVisit(Step step);
+    void afterVisit(Scenario scenario);
 
 }

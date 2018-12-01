@@ -87,6 +87,7 @@ public class Step implements Element {
         v.visit(this);
         if (this.scenario != null)
             this.scenario.accept(v);
+        v.afterVisit(this);
     }
 
 }

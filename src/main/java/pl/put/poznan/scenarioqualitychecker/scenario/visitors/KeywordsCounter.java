@@ -20,9 +20,7 @@ public class KeywordsCounter implements Visitor {
     }
 
     @Override
-    public void visit(Scenario scenario) {
-        ;
-    }
+    public void visit(Scenario scenario) {}
 
     @Override
     public void visit(Step step) {
@@ -30,5 +28,11 @@ public class KeywordsCounter implements Visitor {
             numStepsWithKeywords++;
         }
     }
+
+    @Override
+    public void afterVisit(Step step) {}
+
+    @Override
+    public void afterVisit(Scenario scenario) {}
 
 }

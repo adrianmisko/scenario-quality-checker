@@ -27,8 +27,12 @@ public class ActorlessStepsGetter implements Visitor {
     }
 
     @Override
-    public void visit(Scenario scenario) {
-        ;
-    }
+    public void visit(Scenario scenario) {}
+
+    @Override
+    public void afterVisit(Step step) {}
+
+    @Override
+    public void afterVisit(Scenario scenario) {}
 
 }
