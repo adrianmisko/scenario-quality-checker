@@ -9,6 +9,7 @@ import pl.put.poznan.scenarioqualitychecker.scenario.model.Step;
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.ActorlessStepsGetter;
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.KeywordsCounter;
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.StepCounter;
+import pl.put.poznan.scenarioqualitychecker.scenario.visitors.NumberedListOfSteps;
 
 import java.util.*;
 
@@ -63,6 +64,12 @@ public class ScenarioService {
                 case "NumberOfKeywords": {
                     KeywordsCounter kc = new KeywordsCounter();
                     response.put(param, kc.getNumStepsWithKeywords());
+                    break;
+                }
+                case "NumberedListOfSteps": {
+                    NumberedListOfSteps nls = new NumberedListOfSteps();
+                    scenario.accept(nls);
+                    response.put(param, nls.getNumberedList());
                     break;
                 }
                 default: {
