@@ -11,6 +11,7 @@ matrix:
 
     script:
     - mvn javadoc:javadoc
+    - mvn test
     after_success:
     - grunt gh-pages:travis
     - ".travis/push-javadoc.sh"
