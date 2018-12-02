@@ -35,7 +35,6 @@ public class Header {
     @Getter
     @Setter
     @NotEmpty
-    @Column(unique = true)
     private String title;
 
     /**
