@@ -10,6 +10,7 @@ import pl.put.poznan.scenarioqualitychecker.scenario.visitors.ActorlessStepsGett
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.KeywordsCounter;
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.StepCounter;
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.NumberedListOfSteps;
+import pl.put.poznan.scenarioqualitychecker.scenario.visitors.SubscenarioCounter;
 
 import java.util.*;
 
@@ -70,6 +71,12 @@ public class ScenarioService {
                     NumberedListOfSteps nls = new NumberedListOfSteps();
                     scenario.accept(nls);
                     response.put(param, nls.getNumberedList());
+                    break;
+                }
+                case "NumberOfSubscenarios": {
+                    SubscenarioCounter subc = new SubscenarioCounter();
+                    scenario.accept(subc);
+                    response.put(param, subc.getNumOfSubscenario());
                     break;
                 }
                 default: {
