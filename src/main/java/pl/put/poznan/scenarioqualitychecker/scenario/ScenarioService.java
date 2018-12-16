@@ -11,6 +11,7 @@ import pl.put.poznan.scenarioqualitychecker.scenario.visitors.KeywordsCounter;
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.StepCounter;
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.NumberedListOfSteps;
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.SubscenarioCounter;
+import pl.put.poznan.scenarioqualitychecker.scenario.visitors.ScenariosUpToLevelGetter;
 
 import java.util.*;
 
@@ -48,7 +49,21 @@ public class ScenarioService {
     public Map<String, Object> apiCall(long id, String[] params) {
         Scenario scenario = getScenario(id);
         Map<String, Object> response = new LinkedHashMap<>();
+        Boolean scenariosUpToLevel = Boolean.FALSE;
         for (String param : params) {
+
+            if(scenariosUpToLevel) {
+                if (param.matches("[0-9]+")) {
+                    ScenariosUpToLevelGetter scenariosUpToLevelGetter = new ScenariosUpToLevelGetter(Integer.parseInt(param));
+                    scenario.accept(scenariosUpToLevelGetter);
+                    response.put("ScenariosUpToLevel(" + param + ")", scenariosUpToLevelGetter.getScenariosUpToLevel());
+                    scenariosUpToLevel = Boolean.FALSE;
+                    continue;
+                } else {
+                    response.put(param, "Error: please put a positive Integer parameter after ScenariosUpToLevel parameter.");
+                    break;
+                }
+            }
             switch (param) {
                 case "NoActors": {
                     ActorlessStepsGetter asg = new ActorlessStepsGetter();
@@ -78,6 +93,10 @@ public class ScenarioService {
                     SubscenarioCounter subc = new SubscenarioCounter();
                     scenario.accept(subc);
                     response.put(param, subc.getNumOfSubscenario());
+                    break;
+                }
+                case "ScenariosUpToLevel": {
+                    scenariosUpToLevel = Boolean.TRUE;
                     break;
                 }
                 default: {
