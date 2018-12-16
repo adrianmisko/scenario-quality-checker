@@ -64,6 +64,7 @@ public class ScenarioService {
                 }
                 case "NumberOfKeywords": {
                     KeywordsCounter kc = new KeywordsCounter();
+                    scenario.accept(kc);
                     response.put(param, kc.getNumStepsWithKeywords());
                     break;
                 }
