@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>pl.put.poznan.scenarioqualitychecker</OriginalElement>
+  <nodes>
+    <node x="792.0" y="1285.0">pl.put.poznan.scenarioqualitychecker.ScenarioQualityCheckerApplicationTests</node>
+    <node x="214.0" y="188.0">pl.put.poznan.scenarioqualitychecker.scenario.visitors.NumberedListOfSteps</node>
+    <node x="281.25" y="652.0">pl.put.poznan.scenarioqualitychecker.scenario.model.Scenario</node>
+    <node x="392.0" y="871.0">pl.put.poznan.scenarioqualitychecker.scenario.ScenarioController</node>
+    <node x="646.0" y="1122.0">pl.put.poznan.scenarioqualitychecker.SubscenarioCounterTests</node>
+    <node x="455.0" y="177.0">pl.put.poznan.scenarioqualitychecker.scenario.visitors.ScenariosUpToLevelGetter</node>
+    <node x="233.75" y="474.0">pl.put.poznan.scenarioqualitychecker.scenario.model.constraints.ValidActor</node>
+    <node x="707.0" y="221.5">pl.put.poznan.scenarioqualitychecker.scenario.visitors.ActorlessStepsGetter</node>
+    <node x="590.5" y="0.0">pl.put.poznan.scenarioqualitychecker.scenario.Visitor</node>
+    <node x="0.0" y="619.0">pl.put.poznan.scenarioqualitychecker.scenario.model.Step</node>
+    <node x="0.0" y="1427.0">pl.put.poznan.scenarioqualitychecker.scenario.ScenarioRepository</node>
+    <node x="0.0" y="221.5">pl.put.poznan.scenarioqualitychecker.scenario.visitors.StepCounter</node>
+    <node x="0.0" y="871.0">pl.put.poznan.scenarioqualitychecker.ValidatorsTests</node>
+    <node x="760.0" y="871.0">pl.put.poznan.scenarioqualitychecker.scenario.ScenarioService</node>
+    <node x="396.0" y="1285.0">pl.put.poznan.scenarioqualitychecker.scenario.model.constraints.ValidSystemActorValidator</node>
+    <node x="1102.0" y="871.0">pl.put.poznan.scenarioqualitychecker.scenario.model.Header</node>
+    <node x="519.75" y="474.0">pl.put.poznan.scenarioqualitychecker.scenario.model.constraints.ValidSystemActor</node>
+    <node x="42.75" y="496.0">pl.put.poznan.scenarioqualitychecker.scenario.Element</node>
+    <node x="1138.0" y="221.5">pl.put.poznan.scenarioqualitychecker.scenario.visitors.SubscenarioCounter</node>
+    <node x="1131.0" y="1285.0">pl.put.poznan.scenarioqualitychecker.ScenarioQualityCheckerApplication</node>
+    <node x="921.0" y="221.5">pl.put.poznan.scenarioqualitychecker.scenario.visitors.KeywordsCounter</node>
+    <node x="0.0" y="1285.0">pl.put.poznan.scenarioqualitychecker.scenario.model.constraints.ValidActorValidator</node>
+    <node x="830.75" y="474.0">pl.put.poznan.scenarioqualitychecker.ScenarioTests</node>
+    <node x="942.0" y="1122.0">pl.put.poznan.scenarioqualitychecker.StepCounterTests</node>
+    <node x="0.0" y="1122.0">pl.put.poznan.scenarioqualitychecker.ServiceTests</node>
+    <node x="335.0" y="1122.0">pl.put.poznan.scenarioqualitychecker.ActorlessStepsGetterTests</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="pl.put.poznan.scenarioqualitychecker.scenario.visitors.KeywordsCounter" target="pl.put.poznan.scenarioqualitychecker.scenario.Visitor">
+      <point x="0.0" y="-81.5" />
+      <point x="1019.5" y="147.0" />
+      <point x="736.0" y="147.0" />
+      <point x="48.5" y="58.5" />
+    </edge>
+    <edge source="pl.put.poznan.scenarioqualitychecker.scenario.visitors.StepCounter" target="pl.put.poznan.scenarioqualitychecker.scenario.Visitor">
+      <point x="0.0" y="-81.5" />
+      <point x="97.0" y="137.0" />
+      <point x="606.6666666666666" y="137.0" />
+      <point x="-80.83333333333337" y="58.5" />
+    </edge>
+    <edge source="pl.put.poznan.scenarioqualitychecker.scenario.visitors.NumberedListOfSteps" target="pl.put.poznan.scenarioqualitychecker.scenario.Visitor">
+      <point x="0.0" y="-115.0" />
+      <point x="324.5" y="147.0" />
+      <point x="639.0" y="147.0" />
+      <point x="-48.5" y="58.5" />
+    </edge>
+    <edge source="pl.put.poznan.scenarioqualitychecker.scenario.model.Step" target="pl.put.poznan.scenarioqualitychecker.scenario.Element">
+      <point x="0.0" y="-103.5" />
+      <point x="-42.75" y="25.5" />
+    </edge>
+    <edge source="pl.put.poznan.scenarioqualitychecker.scenario.visitors.ScenariosUpToLevelGetter" target="pl.put.poznan.scenarioqualitychecker.scenario.Visitor">
+      <point x="0.0" y="-126.0" />
+      <point x="571.0" y="157.0" />
+      <point x="671.3333333333334" y="157.0" />
+      <point x="-16.16666666666663" y="58.5" />
+    </edge>
+    <edge source="pl.put.poznan.scenarioqualitychecker.scenario.model.Scenario" target="pl.put.poznan.scenarioqualitychecker.scenario.Element">
+      <point x="-57.0" y="-70.5" />
+      <point x="309.75" y="594.0" />
+      <point x="171.0" y="594.0" />
+      <point x="42.75" y="25.5" />
+    </edge>
+    <edge source="pl.put.poznan.scenarioqualitychecker.scenario.visitors.SubscenarioCounter" target="pl.put.poznan.scenarioqualitychecker.scenario.Visitor">
+      <point x="0.0" y="-81.5" />
+      <point x="1235.0" y="137.0" />
+      <point x="768.3333333333334" y="137.0" />
+      <point x="80.83333333333337" y="58.5" />
+    </edge>
+    <edge source="pl.put.poznan.scenarioqualitychecker.scenario.model.Scenario" target="pl.put.poznan.scenarioqualitychecker.scenario.model.constraints.ValidActor">
+      <point x="0.0" y="-70.5" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="pl.put.poznan.scenarioqualitychecker.scenario.visitors.ActorlessStepsGetter" target="pl.put.poznan.scenarioqualitychecker.scenario.Visitor">
+      <point x="0.0" y="-81.5" />
+      <point x="804.0" y="157.0" />
+      <point x="703.6666666666666" y="157.0" />
+      <point x="16.16666666666663" y="58.5" />
+    </edge>
+    <edge source="pl.put.poznan.scenarioqualitychecker.scenario.model.Scenario" target="pl.put.poznan.scenarioqualitychecker.scenario.model.constraints.ValidSystemActor">
+      <point x="57.0" y="-70.5" />
+      <point x="423.75" y="594.0" />
+      <point x="652.75" y="594.0" />
+      <point x="0.0" y="47.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4888888888888888" x="853.0944841675179" y="753.0454545454546" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
