@@ -17,7 +17,6 @@ public class ScenarioTests {
     private String malformedScenario = "{\"header\":{\"title\":\"additem1\",\"actors\":[\"actor1\",\"actor2\",\"\"],\"system actors\":[\"sysactor1\",\"sysactor2\"]},\"steps\":[\"keyword\":\"\",\"actor\":\"actor1\",\"system actor\":\"sysactor1\",\"text\":\"lorem40\",\"scenario\":null},{\"keyword\":\"IF\",\"actor\":\"actor1\",\"system actor\":\"sysactor2\",\"text\":\"lorem40\",\"scenario\":{\"header\":{\"title\":\"title2\",\"actors\":[\"actor222\"],\"system actors\":[\"sysactor222\"]},\"steps\":[{\"keyword\":\"FOREACH\",\"actor\":\"actor222\",\"system actor\":\"sysactor222\",\"text\":\"loremipsum\",\"scenario\":null},{\"keyword\":\"\",\"actor\":\"actor222\",\"system actor\":\"sysactor222\",\"text\":\"loremipsum2\",\"scenario\":null}]}},{\"keyword\":\"\",\"actor\":\"actor2\",\"system actor\":\"sysactor2\",\"text\":\"lorem40\",\"scenario\":null}]}";
 
 
-    //doesn't throw
     @Test
     public void testParsingCorrectJsonIntoObject() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();

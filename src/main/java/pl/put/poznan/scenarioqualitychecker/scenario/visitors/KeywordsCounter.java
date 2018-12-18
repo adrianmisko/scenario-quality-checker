@@ -9,6 +9,10 @@ import pl.put.poznan.scenarioqualitychecker.scenario.model.Step;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class gets count of steps with keywords and stores them in numStepsWithKeywords variable;
+ */
+
 public class KeywordsCounter implements Visitor {
 
     @Setter
@@ -22,6 +26,11 @@ public class KeywordsCounter implements Visitor {
     @Override
     public void visit(Scenario scenario) {}
 
+
+    /**
+     * Method to check if step is with keyword
+     * @param step Step of scenario.
+     */
     @Override
     public void visit(Step step) {
         if (! step.getKeyword().equals("")) {

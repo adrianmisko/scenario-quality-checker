@@ -16,7 +16,7 @@ public class SubscenarioCounterTests {
     private String scenariowithsubscenario = "{\"header\":{\"title\":\"add item\",\"actors\":[\"actor1\", \"actor2\"],\"system actors\":[\"sysactor1\", \"sysactor2\"]},\"steps\":[{\"keyword\":\"\",\"actor\":\"actor1\",\"system actor\":\"sysactor1\",\"text\":\"lorem40\",\"scenario\":null},{\"keyword\":\"IF\",\"actor\":\"actor1\",\"system actor\":\"sysactor2\",\"text\":\"lorem40\",\"scenario\":{\"header\":{\"title\":\"title2\",\"actors\":[\"actor222\"],\"system actors\":[\"sysactor222\"]},\"steps\":[{\"keyword\":\"FOR EACH\",\"actor\":\"actor222\",\"system actor\":\"sysactor222\",\"text\":\"lorem ipsum\",\"scenario\":null},{\"keyword\":\"\",\"actor\":\"actor222\",\"system actor\":\"sysactor222\",\"text\":\"lorem ipsum2\",\"scenario\":{\"header\":{\"title\":\"title3\",\"actors\":[\"actor222\"],\"system actors\":[\"sysactor222\"]},\"steps\":[{\"keyword\":\"FOR EACH\",\"actor\":\"actor222\",\"system actor\":\"sysactor222\",\"text\":\"lorem ipsum\",\"scenario\":null}]}}]}},{\"keyword\":\"\",\"actor\":\"actor2\",\"system actor\":\"sysactor2\",\"text\":\"lorem40\",\"scenario\":null}]}";
 
     @Test
-    public void testscenariowithoutsteps() throws IOException{
+    public void testScenarioWithoutSteps() throws IOException{
         ObjectMapper om = new ObjectMapper();
         Scenario s = om.readValue(scenariowithoutsubscenario, Scenario.class);
         SubscenarioCounter subc = new SubscenarioCounter();
@@ -26,7 +26,7 @@ public class SubscenarioCounterTests {
     }
 
     @Test
-    public void testscenariowithsteps() throws IOException{
+    public void testScenarioWithSteps() throws IOException{
         ObjectMapper om = new ObjectMapper();
         Scenario s = om.readValue(scenariowithsubscenario, Scenario.class);
         SubscenarioCounter subc = new SubscenarioCounter();

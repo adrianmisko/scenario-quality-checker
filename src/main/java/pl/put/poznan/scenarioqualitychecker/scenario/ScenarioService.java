@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import pl.put.poznan.scenarioqualitychecker.scenario.model.Scenario;
-import pl.put.poznan.scenarioqualitychecker.scenario.model.Step;
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.ActorlessStepsGetter;
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.KeywordsCounter;
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.StepCounter;
@@ -107,7 +106,6 @@ public class ScenarioService {
         }
         return response;
     }
-
 
     /**
      * Method to get list of all scenarios.

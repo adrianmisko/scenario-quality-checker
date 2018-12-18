@@ -9,6 +9,10 @@ import pl.put.poznan.scenarioqualitychecker.scenario.model.Step;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class gets steps that don't have an actor from the scenario and stores them in actrolessSteps list;
+ */
+
 public class ActorlessStepsGetter implements Visitor {
 
     @Getter
@@ -19,6 +23,10 @@ public class ActorlessStepsGetter implements Visitor {
         actorlessSteps = new ArrayList<>();
     }
 
+    /**
+     * Method to check if step is without an actor
+     * @param step Step of scenario.
+     */
     @Override
     public void visit(Step step) {
         if (step.getActor().equals("")) {
