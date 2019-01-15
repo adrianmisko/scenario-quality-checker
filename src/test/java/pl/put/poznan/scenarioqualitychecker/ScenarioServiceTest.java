@@ -39,4 +39,12 @@ public class ScenarioServiceTest {
         verify(repository).save(any(Scenario.class));
     }
 
+    @Test
+    public void testGetScenario() {
+        Scenario s = new Scenario();
+        when(repository.save(any(Scenario.class))).thenReturn(s);
+        service.createScenario(s);
+        verify(repository).save(any(Scenario.class));
+    }
+
 }

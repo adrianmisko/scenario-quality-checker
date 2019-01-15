@@ -55,8 +55,6 @@ public class ActorlessStepsGetterTests {
         Step step5 = new Step();
         step5.setActor("");
         subscenarioWithActors.getSteps().add(step5);
-
-
     }
 
 
