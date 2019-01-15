@@ -80,6 +80,15 @@ public class ScenarioController {
 
     }
 
+
+    @RequestMapping(value = "/scenarios/{id}/graph", method = RequestMethod.GET, produces = "application/json")
+    public String getScenarioGraph(@PathVariable long id) {
+
+        log.info("GET /scenarios/" + Long.toString(id) + "/graph");
+        return service.getScenarioInGraphForm(id);
+
+    }
+
     /**
      * A constructor for class.
      */

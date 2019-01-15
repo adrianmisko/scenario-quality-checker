@@ -5,12 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import pl.put.poznan.scenarioqualitychecker.scenario.model.Scenario;
-import pl.put.poznan.scenarioqualitychecker.scenario.visitors.ActorlessStepsGetter;
-import pl.put.poznan.scenarioqualitychecker.scenario.visitors.KeywordsCounter;
-import pl.put.poznan.scenarioqualitychecker.scenario.visitors.StepCounter;
-import pl.put.poznan.scenarioqualitychecker.scenario.visitors.NumberedListOfSteps;
-import pl.put.poznan.scenarioqualitychecker.scenario.visitors.SubscenarioCounter;
-import pl.put.poznan.scenarioqualitychecker.scenario.visitors.ScenariosUpToLevelGetter;
+import pl.put.poznan.scenarioqualitychecker.scenario.visitors.*;
 
 import java.util.*;
 
@@ -39,8 +34,8 @@ public class ScenarioService {
     }
 
     /**
-     * Method that call application service.
-     * @param id Id scenario.
+     * This method executes functions based on request parameters and concatenates the results into JSON response.
+     * @param id ID of scenario that functions will be called on.
      * @param params The string that determines what api functions will be called/applied.
      * @return A JSON response containing results of called api functions.
      */
@@ -95,9 +90,10 @@ public class ScenarioService {
                     break;
                 }
                 case "ScenariosUpToLevel": {
-                    scenariosUpToLevel = Boolean.TRUE;
+                    scenariosUpToLevel = Boolean.TRUE;          //this is not perfect
                     break;
                 }
+
                 default: {
                     response.put(param, "wrong parameter");
                     break;
@@ -105,6 +101,20 @@ public class ScenarioService {
             }
         }
         return response;
+    }
+
+    /**
+     * Get scenario in graph form. More info on visitors/GraphBuilder
+     * Requires separate endpoint because return type is text instead of application/json
+     * @return dot-use ready String
+     */
+
+    public String getScenarioInGraphForm(long id) {
+        Scenario scenario = getScenario(id);
+        GraphBuilder gb = new GraphBuilder();
+        scenario.accept(gb);
+        gb.onFinish();
+        return gb.getScenarioGraphInTextForm();
     }
 
     /**

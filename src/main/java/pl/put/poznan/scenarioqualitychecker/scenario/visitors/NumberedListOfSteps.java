@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class NumberedListOfSteps implements Visitor{
+public class NumberedListOfSteps implements Visitor {
 
     @Getter
     @Setter
@@ -30,7 +30,7 @@ public class NumberedListOfSteps implements Visitor{
     @Override
     public void visit(Step s) {
         numOfSteps++;
-        numberedList.add(Strings.repeat("  ", numOfScenarios-1) + Integer.toString(numOfScenarios) + '.' + Integer.toString(numOfSteps) +  ". " + s.getText());
+        numberedList.add(Strings.repeat("  ", numOfScenarios - 1) + Integer.toString(numOfScenarios) + '.' + Integer.toString(numOfSteps) +  ". " + s.getText());
     }
 
     @Override
