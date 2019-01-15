@@ -83,7 +83,7 @@ public class ScenarioController {
 
     /**
      * Method for getting graph representation of the scenario. Returns text in dot format.
-     * More info in visitors/GraphBuilder & example in readme.md
+     * More info in visitors/GraphBuilder and example in readme.md
      * @param id - ID of scenario you'd like to get graph form
      * @return graph in text format to be saved or piped to dot tool
      */
