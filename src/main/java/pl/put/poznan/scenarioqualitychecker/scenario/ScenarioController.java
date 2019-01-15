@@ -81,11 +81,27 @@ public class ScenarioController {
     }
 
 
+    /**
+     * Method for getting graph representation of the scenario. Returns text in dot format.
+     * More info in visitors/GraphBuilder & example in readme.md
+     * @param id - ID of scenario you'd like to get graph form
+     * @return graph in text format to be saved or piped to dot tool
+     */
+
     @RequestMapping(value = "/scenarios/{id}/graph", method = RequestMethod.GET, produces = "application/json")
     public String getScenarioGraph(@PathVariable long id) {
 
         log.info("GET /scenarios/" + Long.toString(id) + "/graph");
         return service.getScenarioInGraphForm(id);
+
+    }
+
+
+    @RequestMapping(value = "/scenarios/titles", method = RequestMethod.GET, produces = "application/json")
+    public Map<String, String> getTitles() {
+
+        log.info("GET /scenarios/titles");
+        return service.getScenariosWithTitles();
 
     }
 

@@ -139,7 +139,18 @@ public class ScenarioService {
      * A constructor for class.
      */
 
+    public Map<String, String> getScenariosWithTitles() {
+        Map<String, String> response = new HashMap<>();
+
+        List<Scenario> scenarios = this.getAllScenarios();
+        for (Scenario s : scenarios)
+            response.put(s.getHeader().getTitle(), Long.toString(s.getId()));
+
+        return response;
+    }
+
     public ScenarioService() {
         super();
     }
+
 }
