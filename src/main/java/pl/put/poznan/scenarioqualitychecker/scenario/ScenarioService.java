@@ -113,7 +113,6 @@ public class ScenarioService {
         Scenario scenario = getScenario(id);
         GraphBuilder gb = new GraphBuilder();
         scenario.accept(gb);
-        gb.onFinish();
         return gb.getScenarioGraphInTextForm();
     }
 
