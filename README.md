@@ -20,3 +20,12 @@ Structure of scenario:
    
 Link to product backlog on Trello: https://trello.com/b/zO5wBOFS
 
+Example of graph created by GraphBuilder:
+
+
+![graph](https://github.com/adrianmisko/scenario-quality-checker/blob/master/graph.png)
+
+
+To create your own graph from dot file make GET request at /scenarios/{id}/graph,
+save this to new file graph.dot and enter to your console: dot -Tpng graph.dot -o outfile.png | eog outfile.png.
+
