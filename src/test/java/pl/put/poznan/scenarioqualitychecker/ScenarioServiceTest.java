@@ -1,36 +1,42 @@
 package pl.put.poznan.scenarioqualitychecker;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import pl.put.poznan.scenarioqualitychecker.scenario.ScenarioRepository;
 import pl.put.poznan.scenarioqualitychecker.scenario.ScenarioService;
+import pl.put.poznan.scenarioqualitychecker.scenario.model.Scenario;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+
 public class ScenarioServiceTest {
 
     @Autowired
+    @InjectMocks
     private ScenarioService service;
 
     @Mock
     private ScenarioRepository repository;
 
-
-    @BeforeClass
-    public static void setUp() {
-        MockitoAnnotations.initMocks(ScenarioServiceTest.class);
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void test() {
-        Assert.assertEquals(1, 1);
+    public void testAdd() {
+        Scenario s = new Scenario();
+        when(repository.save(any(Scenario.class))).thenReturn(s);
+        service.createScenario(s);
+        verify(repository).save(any(Scenario.class));
     }
 
 }
