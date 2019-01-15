@@ -1,0 +1,83 @@
+{
+	"header" :
+	{	
+		"title" : "add item",
+		"actors" : ["actor1", "actor2"],
+		"system actors" : ["sysactor1", "sysactor2"]
+	},
+	"steps" : [
+		{
+			"keyword" : "IF",
+			"actor" : "",
+			"system actor" : "sysactor1",
+			"text" : "1.1",
+			"scenario" : null
+		},
+		{
+			"keyword" : "IF",
+			"actor" : "actor1",
+			"system actor" : "sysactor2",
+			"text" : "1.2",
+			"scenario" : { 
+				"header" : {
+					"title" : "title2",
+					"actors" : ["actor222", "actor1"],
+					"system actors" : ["sysactor222"]
+				},
+				"steps" : [
+					{
+						"keyword" : "FOR EACH",
+						"actor" : "",
+						"system actor" : "sysactor222",
+						"text" : "2.1",
+						"scenario" : {
+							"header" : {
+								"title" : "title3",
+								"actors" : ["actor222", "actor1"],
+								"system actors" : ["sysactor222"]
+							},
+							"steps" : [
+								{
+									"keyword" : "FOR EACH",
+									"actor" : "",
+									"system actor" : "sysactor222",
+									"text" : "3.1",
+									"scenario" : null
+								},
+								{
+									"keyword" : "IF",
+									"actor" : "",
+									"system actor" : "sysactor222",
+									"text" : "3.2",
+									"scenario" : null
+								}
+							]
+				
+						}
+					},
+					{
+						"keyword" : "IF",
+						"actor" : "",
+						"system actor" : "sysactor222",
+						"text" : "2.2",
+						"scenario" : null
+					}
+				]
+			}
+		},
+		{
+			"keyword" : "IF",
+			"actor" : "",
+			"system actor" : "sysactor2",
+			"text" : "1.3",
+			"scenario" :  null
+		},
+			{
+			"keyword" : "IF",
+			"actor" : "",
+			"system actor" : "sysactor2",
+			"text" : "1.4",
+			"scenario" :  null
+		}
+	]
+} 
