@@ -18,7 +18,7 @@ import java.util.Map;
  */
 
 @Slf4j
-@RestController
+@RestController("/scenarios")
 public class ScenarioController {
 
     /**
@@ -34,7 +34,7 @@ public class ScenarioController {
      * @return List of all scenarios
      */
 
-    @RequestMapping(value = "/scenarios", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping
     public Map<String, List<Scenario>> getScenarios() {
         log.info("GET /scenarios");
         Map<String, List<Scenario>> result = new LinkedHashMap<>();
@@ -49,7 +49,7 @@ public class ScenarioController {
      * @return A JSON response containing results of called api functions.
      */
 
-    @RequestMapping(value = "/scenarios/{id}", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping("/{id}")
     public Map<String, Object> getScenario(@PathVariable long id, @RequestParam(value = "api", required = false) String[] params) {
 
         if (params == null) {
@@ -60,7 +60,7 @@ public class ScenarioController {
         }
 
         log.info("GET /scenarios/" + Long.toString(id) + "?api=" + params);
-        return service.apiCall(id, params);
+        return service.makeResponseFromRequestParameters(id, params);
     }
 
     /**
@@ -69,8 +69,7 @@ public class ScenarioController {
      * @return A response that informs about success.
      */
 
-    @RequestMapping(value = "/scenarios", method = RequestMethod.POST,
-            consumes = "application/json", produces = "application/json")
+    @PostMapping
     public ResponseEntity addScenario(@RequestBody @Valid Scenario scenario) {
 
         log.info("POST /scenarios");
@@ -88,7 +87,7 @@ public class ScenarioController {
      * @return graph in text format to be saved or piped to dot tool
      */
 
-    @RequestMapping(value = "/scenarios/{id}/graph", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping("/{id}/graph")
     public String getScenarioGraph(@PathVariable long id) {
 
         log.info("GET /scenarios/" + Long.toString(id) + "/graph");
@@ -97,7 +96,7 @@ public class ScenarioController {
     }
 
 
-    @RequestMapping(value = "/scenarios/titles", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping("/titles")
     public Map<String, String> getTitles() {
 
         log.info("GET /scenarios/titles");
@@ -105,11 +104,4 @@ public class ScenarioController {
 
     }
 
-    /**
-     * A constructor for class.
-     */
-
-    public ScenarioController() {
-        super();
-    }
 }
