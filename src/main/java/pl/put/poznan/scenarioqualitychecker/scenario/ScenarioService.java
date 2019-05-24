@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 import pl.put.poznan.scenarioqualitychecker.scenario.model.Scenario;
+import pl.put.poznan.scenarioqualitychecker.scenario.strategies.*;
 import pl.put.poznan.scenarioqualitychecker.scenario.visitors.*;
 
 import java.util.*;
@@ -21,8 +22,18 @@ public class ScenarioService {
      */
 
     @Autowired
-    ScenarioRepository repository;
+    private ScenarioRepository repository;
 
+    private ResponseGenerationStrategy responseGenerationStrategy;
+
+    private Map<String, ResponseGenerationStrategy> strategies = Map.of(
+            "NoActors",             new GetNumberOfStepsWithoutActors(),
+            "NumberOfSteps",        new GetNumberOfSteps(),
+            "NumberOfKeywords",     new GetNumberOfKeywords(),
+            "NumberedListOfSteps",  new GetNumberedListOfSteps(),
+            "NumberOfSubscenarios", new GetNumberOfSubscenarios(),
+            "ScenariosUpToLevel",   new GetScenariosUpToLevel()
+    );
 
     /**
      * Method that saves scenario in repository.
@@ -40,67 +51,20 @@ public class ScenarioService {
      * @return A JSON response containing results of called api functions.
      */
 
-    public Map<String, Object> apiCall(long id, String[] params) {
+    public Map<String, Object> makeResponseFromRequestParameters(long id, String[] params) {
         Scenario scenario = getScenario(id);
         Map<String, Object> response = new LinkedHashMap<>();
-        Boolean scenariosUpToLevel = Boolean.FALSE;
         for (String param : params) {
-
-            if(scenariosUpToLevel) {
-                if (param.matches("[0-9]+")) {
-                    ScenariosUpToLevelGetter scenariosUpToLevelGetter = new ScenariosUpToLevelGetter(Integer.parseInt(param));
-                    scenario.accept(scenariosUpToLevelGetter);
-                    response.put("ScenariosUpToLevel(" + param + ")", scenariosUpToLevelGetter.getScenariosUpToLevel());
-                    scenariosUpToLevel = Boolean.FALSE;
-                    continue;
-                } else {
-                    response.put(param, "Error: please put a positive Integer parameter after ScenariosUpToLevel parameter.");
-                    break;
-                }
-            }
-            switch (param) {
-                case "NoActors": {
-                    ActorlessStepsGetter asg = new ActorlessStepsGetter();
-                    scenario.accept(asg);
-                    response.put(param, asg.getActorlessSteps());
-                    break;
-                }
-                case "NumberOfSteps": {
-                    StepCounter sc = new StepCounter();
-                    scenario.accept(sc);
-                    response.put(param, sc.getNumOfSteps());
-                    break;
-                }
-                case "NumberOfKeywords": {
-                    KeywordsCounter kc = new KeywordsCounter();
-                    scenario.accept(kc);
-                    response.put(param, kc.getNumStepsWithKeywords());
-                    break;
-                }
-                case "NumberedListOfSteps": {
-                    NumberedListOfSteps nls = new NumberedListOfSteps();
-                    scenario.accept(nls);
-                    response.put(param, nls.getNumberedList());
-                    break;
-                }
-                case "NumberOfSubscenarios": {
-                    SubscenarioCounter subc = new SubscenarioCounter();
-                    scenario.accept(subc);
-                    response.put(param, subc.getNumOfSubscenario());
-                    break;
-                }
-                case "ScenariosUpToLevel": {
-                    scenariosUpToLevel = Boolean.TRUE;          //this is not perfect
-                    break;
-                }
-
-                default: {
-                    response.put(param, "wrong parameter");
-                    break;
-                }
-            }
+            response.put(param, makeResponseFromParameter(param, scenario));
         }
         return response;
+    }
+
+    private Object makeResponseFromParameter(String param, Scenario scenario) {
+
+        this.responseGenerationStrategy = strategies.getOrDefault(param, new OperationNotFound());
+        return responseGenerationStrategy.getResponse(scenario);
+
     }
 
     /**
